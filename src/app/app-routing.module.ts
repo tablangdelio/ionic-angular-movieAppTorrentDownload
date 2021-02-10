@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'view-movie/:id',
+    loadChildren: () => import('./view-movie/view-movie.module').then( m => m.ViewMoviePageModule)
+  },
 ];
 
 @NgModule({

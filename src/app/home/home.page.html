@@ -1,20 +1,87 @@
+<ion-menu side="start" menuId="first"  contentId="main">
+  <ion-header>
+    <ion-toolbar color="goat">
+      <ion-title class="ion-text-center">MOVIE GOAT</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar class="ion-no-padding" >
+    <ion-title size="large" class="ion-text-center">MOVIE GOAT</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="goat">
+    <ion-buttons slot="start" >
+       <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list-header>
+    <ion-label>Latest Post</ion-label>
+    <ion-button (click)="showList($event)"><ion-icon name="list-outline"></ion-icon></ion-button>
+    <ion-button (click)="showGrid($event)"><ion-icon name="grid-outline"></ion-icon></ion-button>
+  </ion-list-header>
+
+<ion-list [hidden]="isHiddenList">
+  <ion-item *ngFor="let movie of movieList" lines="full"  [routerLink]="['/view-movie/', movie.id]">
+    <ion-avatar slot="start">
+      <img src="{{ movie.medium_cover_image }}">
+    </ion-avatar>
+    <ion-label>
+      <div><small>  <ion-icon name="star-sharp"></ion-icon> Ratings: {{ movie.rating}}</small> <small> ({{movie.year }})</small> </div>
+      <h4>{{movie.title}}</h4>
+     
+      <p>Genre: <small size="small" *ngFor="let genre of movie.genres" >{{genre}} </small> </p>
+ 
+      </ion-label>
+      <ion-note slot="end"> <ion-icon  slot=""name="chevron-forward-outline"></ion-icon></ion-note>
+    </ion-item>
+</ion-list>
+
+
+ <ion-grid [hidden]="isHiddenGrid">
+   <ion-row>
+    <ion-col>
+      <ion-card *ngFor="let movie of movieList" class="ion-padding">
+        <ion-img  [routerLink]="['/view-movie/', movie.id]" src="{{ movie.medium_cover_image }}" ></ion-img> 
+        <ion-card-header class="ion-no-padding">
+          <ion-card-title><h4>{{movie.title_long}}</h4><ion-note class="ion-text-end">Year: {{ movie.year}} <ion-icon name="star-sharp"></ion-icon>  Rating: {{movie.rating}} Lang: {{ movie.language}}</ion-note></ion-card-title>
+          <ion-card-subtitle >Genre:  <ion-chip *ngFor="let genre of movie.genres"><small> {{ genre }}</small></ion-chip> </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content  class="ion-no-padding">
+          <div>
+            <p>Sypnosis: </p>
+             <p *ngIf="movie.summary !==''"  [routerLink]="['/view-movie/', movie.id]" > {{ movie.summary | slice:0:100 }}  <b> . . .</b></p>
+             <p *ngIf="movie.summary ===''" > No Summary </p>
+            </div>
+            <div class="ion-padding-top torrent-info"> 
+              <ion-row class="">
+                  <ion-col  class="" *ngFor="let download of movie.torrents">
+                    <ion-button expand="full" color="button" (click)="downloads(download.url, movie.title)">Download</ion-button>
+                    <div>
+                    <p class="ion-text-center"> Size: {{download.size }}</p>
+                    <p class="ion-text-center"> Quality: {{download.quality }}</p>
+                    <p class="ion-text-center"> Encode: {{download.type }}</p>
+                    </div>
+                  </ion-col>
+                </ion-row>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMovies(true, $event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more Movies... ">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+

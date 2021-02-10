@@ -1,27 +1,33 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ 
+ion-header{
+    ion-searchbar{
+      
+        --border-radius: 0px;
+        --box-shadow:none;
+   
+        --icon-color: #fff
+    }
+    ion-title{
+        font-weight: 900;
+        letter-spacing: 6px;
+    }
+}
+ion-card{
+    ion-card-content{
+        background:#232323;
+        padding: 6px;
+    }
+}
+.torrent-info{
+    div{
+        margin-top:6px
+    }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.download-buttons{
+    list-style-type: none;
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.download-buttons li{
+          display:inline;
+       
 }

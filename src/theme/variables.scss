@@ -1,8 +1,96 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+
+:root{
+  --ion-background-color: #111111;
+  --ion-background-color-rgb: 33,33,33;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-color-step-50: #2c2c2c;
+  --ion-color-step-100: #373737;
+  --ion-color-step-150: #424242;
+  --ion-color-step-200: #4d4d4d;
+  --ion-color-step-250: #595959;
+  --ion-color-step-300: #646464;
+  --ion-color-step-350: #6f6f6f;
+  --ion-color-step-400: #7a7a7a;
+  --ion-color-step-450: #858585;
+  --ion-color-step-500: #909090;
+  --ion-color-step-550: #9b9b9b;
+  --ion-color-step-600: #a6a6a6;
+  --ion-color-step-650: #b1b1b1;
+  --ion-color-step-700: #bcbcbc;
+  --ion-color-step-750: #c8c8c8;
+  --ion-color-step-800: #d3d3d3;
+  --ion-color-step-850: #dedede;
+  --ion-color-step-900: #e9e9e9;
+  --ion-color-step-950: #f4f4f4;
+
+  /*header theme*/
+  --ion-color-goat: #252525;
+  --ion-color-goat-rgb: 0,0,0;
+  --ion-color-goat-contrast: #ffffff;
+  --ion-color-goat-contrast-rgb: 255,255,255;
+  --ion-color-goat-shade: #000000;
+  --ion-color-goat-tint: #1a1a1a;
+
+  .ion-color-goat {
+    --ion-color-base: var(--ion-color-goat);
+    --ion-color-base-rgb: var(--ion-color-goat-rgb);
+    --ion-color-contrast: var(--ion-color-goat-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-goat-contrast-rgb);
+    --ion-color-shade: var(--ion-color-goat-shade);
+    --ion-color-tint: var(--ion-color-goat-tint);
+  }
+
+  ion-card{
+    --background: #222222;
+  }
+
+  ion-list{
+    ion-avatar{
+     
+        --border-radius:0px;
+    
+    }
+    ion-item{
+    
+      --background: #222222;
+    }
+
+  }
+  
+  
+}
+
+
+:root {
+  --ion-color-button: #121212;
+  --ion-color-button-rgb: 18,18,18;
+  --ion-color-button-contrast: #ffffff;
+  --ion-color-button-contrast-rgb: 255,255,255;
+  --ion-color-button-shade: #101010;
+  --ion-color-button-tint: #2a2a2a;
+}
+
+.ion-color-button {
+  --ion-color-base: var(--ion-color-button);
+  --ion-color-base-rgb: var(--ion-color-button-rgb);
+  --ion-color-contrast: var(--ion-color-button-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-button-contrast-rgb);
+  --ion-color-shade: var(--ion-color-button-shade);
+  --ion-color-tint: var(--ion-color-button-tint);
+}
+
 /** Ionic CSS Variables **/
 :root {
+
+
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
